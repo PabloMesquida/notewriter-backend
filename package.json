@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "nodemon src/index.ts",
     "lint": "eslint . --ext .ts"
   },
   "keywords": [],
