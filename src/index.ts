@@ -8,22 +8,22 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
-try {
-  mongoose.connect(process.env.MONGO_CONNECTION_STRING!).then(() => {
-    console.log("Mongoose connected");
-    app.listen(port, () => {
-      console.log(`Server running on port: ${port}`);
-    });
-  });
-} catch (error) {
-  console.error("Error connecting to MongoDB:", error);
-}
-
-module.exports = app;
-
-// mongoose.connect(process.env.MONGO_CONNECTION_STRING!).then(() => {
-//   console.log("Mongoose connected");
-//   app.listen(port, () => {
-//     console.log(`Server runnin on port: ${port}`);
+// try {
+//   mongoose.connect(process.env.MONGO_CONNECTION_STRING!).then(() => {
+//     console.log("Mongoose connected");
+//     app.listen(port, () => {
+//       console.log(`Server running on port: ${port}`);
+//     });
 //   });
-// });
+// } catch (error) {
+//   console.error("Error connecting to MongoDB:", error);
+// }
+
+// module.exports = app;
+
+mongoose.connect(process.env.MONGO_CONNECTION_STRING!).then(() => {
+  console.log("Mongoose connected");
+  app.listen(port, () => {
+    console.log(`Server runnin on port: ${port}`);
+  });
+});
