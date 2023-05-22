@@ -9,8 +9,6 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
-console.log("X");
-
 mongoose
   .connect(env.MONGO_CONNECTION_STRING)
   .then(() => {
@@ -20,3 +18,5 @@ mongoose
     });
   })
   .catch(console.error);
+
+module.exports = app;
