@@ -1,4 +1,7 @@
-import app from "./app";
+import "dotenv/config";
+import express from "express";
+import NoteModel from "./models/note";
+//import app from "./app";
 import env from "./util/validateEnv";
 import mongoose from "mongoose";
 
@@ -14,4 +17,11 @@ mongoose
   })
   .catch(console.error);
 
-//module.exports = app;
+const app = express();
+
+app.get("/", async (req, res) => {
+  const notes = await NoteModel.find().exec();
+  res.status(200).json(notes);
+});
+
+module.exports = app;
