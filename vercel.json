@@ -3,6 +3,6 @@
   "builds": [{ "src": "src/index.ts", "use": "@vercel/node" }],
   "routes": [{ "src": "/(.*)", "dest": "/src/index.ts" }],
   "env": {
-    "MONGO_CONNECTION_STRING": "@mongo-connection-string"
+    "MONGO_CONNECTION_STRING": "@MONGO_CONNECTION_STRING"
   }
 }
