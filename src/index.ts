@@ -19,6 +19,8 @@ try {
   console.error("Error connecting to MongoDB:", error);
 }
 
+module.exports = app;
+
 // mongoose.connect(process.env.MONGO_CONNECTION_STRING!).then(() => {
 //   console.log("Mongoose connected");
 //   app.listen(port, () => {
