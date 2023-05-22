@@ -1,6 +1,13 @@
 {
   "version": 2,
-  "builds": [{ "src": "src/index.ts", "use": "@vercel/node" }],
+  "builds": [
+    { "src": "src/index.ts", "use": "@vercel/node" },
+    {
+      "env": {
+        "MONGO_CONNECTION_STRING": "@MONGO_CONNECTION_STRING"
+      }
+    }
+  ],
   "routes": [{ "src": "/(.*)", "dest": "/src/index.ts" }],
   "env": {
     "MONGO_CONNECTION_STRING": "@MONGO_CONNECTION_STRING"
