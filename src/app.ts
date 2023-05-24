@@ -7,16 +7,7 @@ import createHttpError, { isHttpError } from "http-errors";
 
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:5173/",
-  "https://notewriter.vercel.app/",
-];
-
-const options: cors.CorsOptions = {
-  origin: allowedOrigins,
-};
-
-app.use(cors(options));
+app.use(cors({ origin: "*" }));
 
 app.use(morgan("dev"));
 
