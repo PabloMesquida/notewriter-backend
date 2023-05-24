@@ -1,10 +1,22 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import morgan from "morgan";
+import cors from "cors";
 import notesRouter from "./routes/notes";
 import createHttpError, { isHttpError } from "http-errors";
 
 const app = express();
+
+const allowedOrigins = [
+  "http://localhost:5173/",
+  "https://notewriter.vercel.app/",
+];
+
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
+
+app.use(cors(options));
 
 app.use(morgan("dev"));
 
