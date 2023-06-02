@@ -15,6 +15,7 @@ const corsOptions: CorsOptions = {
   origin: "https://notewriter.vercel.app",
   methods: ["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
