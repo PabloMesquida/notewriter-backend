@@ -12,7 +12,7 @@ import MongoStore from "connect-mongo";
 const app = express();
 
 const corsOptions: CorsOptions = {
-  origin: "*",
+  origin: "https://notewriter.vercel.app",
   methods: ["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
