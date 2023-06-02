@@ -11,7 +11,15 @@ import MongoStore from "connect-mongo";
 
 const app = express();
 
-app.use(cors({ origin: "*" }));
+app.use(cors());
+
+// Agregar middleware para establecer los encabezados CORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 app.use(morgan("dev"));
 
