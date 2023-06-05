@@ -13,7 +13,7 @@ import { requiresAuth } from "./middleware/auth";
 const app = express();
 
 const corsOptions: CorsOptions = {
-  origin: ["https://notewriter.vercel.app", "http://localhost:5173"],
+  origin: "https://notewriter.vercel.app",
   methods: ["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,

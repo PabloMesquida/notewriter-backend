@@ -11,7 +11,6 @@ export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
 
     res.status(200).json(user);
   } catch (error) {
-    console.log("ERROR!!!");
     next(error);
   }
 };
