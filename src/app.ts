@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
-import morgan from "morgan";
+//import morgan from "morgan";
 import cors, { CorsOptions } from "cors";
 import notesRoutes from "./routes/notes";
 import userRoutes from "./routes/users";
@@ -21,7 +21,7 @@ const corsOptions: CorsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(morgan("dev"));
+//app.use(morgan("dev"));
 
 app.use(express.json());
 
