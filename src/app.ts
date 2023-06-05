@@ -30,7 +30,7 @@ app.use(
     secret: env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 60 * 60 * 1000 },
+    cookie: { maxAge: 60 * 60 * 1000, sameSite: "none", secure: true },
     rolling: true,
     store: MongoStore.create({ mongoUrl: env.MONGO_CONNECTION_STRING }),
   })
