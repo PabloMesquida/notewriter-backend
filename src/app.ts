@@ -33,7 +33,7 @@ app.use(
     cookie: {
       maxAge: 60 * 60 * 1000,
       sameSite: "none",
-      secure: false,
+      secure: true,
       httpOnly: false,
     },
     rolling: true,
