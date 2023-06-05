@@ -14,7 +14,7 @@ const app = express();
 
 const corsOptions: CorsOptions = {
   origin: "https://notewriter.vercel.app",
-  methods: ["GET", "POST", "PATCH", "DELETE"],
+  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
@@ -33,7 +33,7 @@ app.use(
     cookie: {
       maxAge: 60 * 60 * 1000,
       sameSite: "none",
-      secure: true,
+      secure: false,
       httpOnly: false,
     },
     rolling: true,
