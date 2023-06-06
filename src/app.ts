@@ -9,15 +9,12 @@ import createHttpError, { isHttpError } from "http-errors";
 import env from "./util/validateEnv";
 import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
-import cookieParser from "cookie-parser";
 
 const app = express();
 
-app.use(cookieParser());
-
 const corsOptions: CorsOptions = {
-  origin: "https://notewriter.vercel.app",
-  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS", "HEAD"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
@@ -35,26 +32,14 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 60 * 60 * 1000,
-      sameSite: "none",
-      secure: false,
+      sameSite: false,
+      secure: process.env.NODE_ENV === "production",
       httpOnly: true,
     },
     rolling: true,
     store: MongoStore.create({ mongoUrl: env.MONGO_CONNECTION_STRING }),
   })
 );
-
-app.use((req, res, next) => {
-  const primeraCookieValue = req.cookies["connect.sid"];
-  res.cookie("connect.sid", primeraCookieValue, {
-    maxAge: 3600000,
-    sameSite: "none",
-    secure: true,
-    httpOnly: true,
-  });
-
-  next();
-});
 
 app.use("/api/users", userRoutes);
 app.use("/api/notes", requiresAuth, notesRoutes);
