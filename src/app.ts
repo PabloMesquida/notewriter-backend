@@ -9,8 +9,11 @@ import createHttpError, { isHttpError } from "http-errors";
 import env from "./util/validateEnv";
 import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
+import cookieParser from "cookie-parser";
 
 const app = express();
+
+app.use(cookieParser());
 
 const corsOptions: CorsOptions = {
   origin: "https://notewriter.vercel.app",
