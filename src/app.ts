@@ -33,7 +33,7 @@ app.use(
     cookie: {
       maxAge: 60 * 60 * 1000,
       sameSite: "none",
-      secure: true,
+      secure: false,
       httpOnly: true,
     },
     rolling: true,
@@ -45,6 +45,7 @@ app.use((req, res, next) => {
   // Agregar una cookie personalizada
   res.cookie("miCookie", "valor de la cookie", {
     maxAge: 3600000,
+    sameSite: "none",
     secure: true,
     httpOnly: true,
   });
