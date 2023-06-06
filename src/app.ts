@@ -14,7 +14,7 @@ const app = express();
 app.set("trust proxy", 1);
 
 const corsOptions: CorsOptions = {
-  origin: "https://notewriter.vercel.app",
+  origin: env.ORIGIN_CORS,
   methods: ["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
