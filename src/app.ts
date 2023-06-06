@@ -33,13 +33,24 @@ app.use(
     cookie: {
       maxAge: 60 * 60 * 1000,
       sameSite: "none",
-      secure: "auto",
+      secure: true,
       httpOnly: true,
     },
     rolling: true,
     store: MongoStore.create({ mongoUrl: env.MONGO_CONNECTION_STRING }),
   })
 );
+
+app.use((req, res, next) => {
+  // Agregar una cookie personalizada
+  res.cookie("miCookie", "valor de la cookie", {
+    maxAge: 3600000,
+    secure: true,
+    httpOnly: true,
+  });
+
+  next();
+});
 
 app.use("/api/users", userRoutes);
 app.use("/api/notes", requiresAuth, notesRoutes);
