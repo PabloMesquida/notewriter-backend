@@ -42,8 +42,8 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  // Agregar una cookie personalizada
-  res.cookie("miCookie", "valor de la cookie", {
+  const primeraCookieValue = req.cookies["connect.sid"];
+  res.cookie("connect.sid", primeraCookieValue, {
     maxAge: 3600000,
     sameSite: "none",
     secure: true,
