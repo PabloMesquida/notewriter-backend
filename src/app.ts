@@ -15,7 +15,7 @@ app.set("trust proxy", 1);
 
 const corsOptions: CorsOptions = {
   origin: "https://notewriter.vercel.app",
-  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS", "HEAD"],
+  methods: ["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
@@ -34,7 +34,6 @@ app.use(
     cookie: {
       maxAge: 60 * 60 * 1000,
       sameSite: "none",
-      // secure: process.env.NODE_ENV === "production",
       secure: true,
       httpOnly: true,
     },
