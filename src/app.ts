@@ -11,6 +11,7 @@ import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
 
 const app = express();
+app.set("trust proxy", 1);
 
 const corsOptions: CorsOptions = {
   origin: "https://notewriter.vercel.app",
@@ -32,7 +33,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 60 * 60 * 1000,
-      sameSite: false,
+      sameSite: "none",
       // secure: process.env.NODE_ENV === "production",
       secure: true,
       httpOnly: true,
